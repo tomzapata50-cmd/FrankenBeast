@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="title">
+  <title id="title">Shuttle bus</title>
+  <g stroke="#ffffff" stroke-width="2" stroke-linejoin="round">
+    <rect x="4" y="5" width="24" height="21" rx="5" fill="#285c3b"/>
+    <rect x="7" y="8" width="18" height="9" rx="2" fill="#dff3e2" stroke="#b9cdb4"/>
+    <path d="M16 8v9M7 20h18" stroke="#b9cdb4"/>
+    <circle cx="10" cy="25" r="3" fill="#23382c"/>
+    <circle cx="22" cy="25" r="3" fill="#23382c"/>
+    <path d="M9 4h14" stroke="#285c3b" stroke-linecap="round"/>
+  </g>
+</svg>

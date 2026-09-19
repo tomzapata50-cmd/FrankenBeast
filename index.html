@@ -164,14 +164,17 @@
         align-items: end;
         margin-top: 12px;
       }
+      #get-route-visible,
       #get-directions {
         background: #285c3b;
         color: white;
         border-color: #285c3b;
       }
+      #get-route-visible:hover:not(:disabled),
       #get-directions:hover:not(:disabled) {
         background: #1c462b;
       }
+      #get-route-visible:disabled,
       #get-directions:disabled,
       #open-google-maps:disabled {
         background: #e7ebe4;
@@ -186,6 +189,19 @@
       }
       #routing-distance:empty {
         margin: 0;
+      }
+      .destination-label {
+        background: #ffffff;
+        border: 1px solid #b9c6b5;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px #23382c26;
+        color: #23382c;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 6px;
+      }
+      .destination-label::before {
+        border-top-color: #b9c6b5;
       }
       #map {
         height: 600px;
@@ -326,7 +342,6 @@
         </button>
       </div>
       <img
-        class="hero-image"
         src="images/frankenmuth-hero.jpg"
         alt="Frankenmuth, Michigan"
         width="900"
@@ -343,6 +358,14 @@
             </button>
             <button id="show-highlight" type="button" aria-controls="map">
               Find the waterpark
+            </button>
+            <button
+              id="get-route-visible"
+              type="button"
+              aria-controls="map"
+              aria-describedby="directions-hint"
+            >
+              Get Route
             </button>
             <button id="stop-location" type="button" hidden>
               Stop sharing location
@@ -497,9 +520,18 @@
           name: "Bavarian Inn Restaurant",
           iconUrl: "icons/chicken-dinner.svg",
           category: "Restaurant",
+          major: true,
           filters: ["food"],
           description:
             "Famous for authentic German cuisine and family-style chicken dinners.",
+        },
+        {
+          coords: [43.327667, -83.739602],
+          name: "Frankenmuth Visitor Center",
+          category: "Visitor Center",
+          major: true,
+          filters: ["sights"],
+          description: "Visitor and welcome center at 635 South Main Street.",
         },
         {
           coords: [43.326908, -83.741101],
@@ -522,9 +554,19 @@
           coords: [43.325876, -83.736763],
           name: "Bavarian Inn Lodge",
           category: "Hotel",
+          major: true,
           filters: ["lodging"],
           description:
             "German-themed lodge with indoor pools and family activities.",
+        },
+        {
+          coords: [43.3251931, -83.7389823],
+          name: "Zehnder's Covered Bridge",
+          category: "Covered Bridge",
+          major: true,
+          filters: ["sights"],
+          description:
+            "Historic covered bridge connecting Main Street with Covered Bridge Lane.",
         },
         {
           coords: [43.324621153, -83.739506368],
@@ -635,6 +677,13 @@
             `,
         );
         shopMarkers.push({ shop: place, marker });
+        if (place.major) {
+          marker.bindTooltip(place.name, {
+            direction: "top",
+            offset: [0, -30],
+            className: "destination-label",
+          });
+        }
       });
 
       // Reuse the River Place Shops marker in the destination list.
@@ -679,8 +728,49 @@
           riverPlaceMarker.getLatLng().lng,
         ],
         category: "Shopping & Dining",
+        major: true,
         filters: ["shopping", "food"],
       };
+      riverPlaceMarker.bindTooltip(riverPlaceShop.name, {
+        direction: "top",
+        offset: [0, -30],
+        className: "destination-label",
+      });
+
+      const shuttleIcon = L.icon({
+        iconUrl: "icons/shuttle-bus.svg",
+        iconSize: [20, 20],
+        iconAnchor: [10, 20],
+        popupAnchor: [0, -20],
+      });
+      const shuttleStopLabel = "Shuttle Pickup / Drop-off";
+      const shuttleStopNote =
+        "Approximate location based on official property map. Confirm exact stop on site.";
+      const shuttleStops = [
+        {
+          coords: [43.32655, -83.73695],
+          area: "Bavarian Inn Lodge",
+        },
+        {
+          coords: [43.32655, -83.7405],
+          area: "Bavarian Inn Restaurant / nearby parking",
+        },
+        {
+          coords: [43.323, -83.739],
+          area: "River Place Shops / nearby parking",
+        },
+      ];
+      shuttleStops.forEach(({ coords, area }) => {
+        L.marker(coords, { title: shuttleStopLabel, icon: shuttleIcon })
+          .addTo(map)
+          .bindTooltip(shuttleStopLabel, {
+            direction: "top",
+            offset: [0, -20],
+          })
+          .bindPopup(
+            `<strong>${shuttleStopLabel}</strong><br>${area}<br>${shuttleStopNote}`,
+          );
+      });
       places.push(riverPlaceShop);
       shopMarkers.push({ shop: riverPlaceShop, marker: riverPlaceMarker });
 
@@ -730,6 +820,15 @@
       const routingDistance = document.getElementById("routing-distance");
       const travelMode = document.getElementById("travel-mode");
       const directionsButton = document.getElementById("get-directions");
+      const visibleRouteButton = document.getElementById("get-route-visible");
+      visibleRouteButton.addEventListener("click", () => {
+        if (destinationSelect.value === "") {
+          destinationSelect.scrollIntoView({ block: "center" });
+          destinationSelect.focus();
+          return;
+        }
+        directionsButton.click();
+      });
       const googleMapsButton = document.getElementById("open-google-maps");
       let routeLine = null;
       let routeRequested = false;
