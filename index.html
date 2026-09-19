@@ -232,6 +232,32 @@
       #open-google-maps {
         margin-top: 12px;
       }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero-help {
+        display: inline-block;
+        min-height: 44px;
+        padding: 10px 14px;
+        border: 1px solid #c7d3c6;
+        border-radius: 9px;
+        background: #fff;
+        color: #285c3b;
+        font: inherit;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+      }
+      .hero-help:hover {
+        background: #edf4ea;
+      }
+      .hero-help:focus-visible {
+        outline: 3px solid #0056b3;
+        outline-offset: 3px;
+      }
       @media (max-width: 900px) {
         body {
           padding: 14px;
@@ -275,6 +301,10 @@
         .location-actions button,
         #open-google-maps {
           width: 100%;
+        }
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
         }
         .filter-container {
           gap: 8px;
@@ -334,12 +364,15 @@
           Find a place to eat, shop, stay or explore. Tap a map icon for
           details.
         </p>
-        <button
-          type="button"
-          onclick="window.location.href = 'river-place.html'"
-        >
-          Explore River Place
-        </button>
+        <div class="hero-actions">
+          <button
+            type="button"
+            onclick="window.location.href = 'river-place.html'"
+          >
+            Explore River Place
+          </button>
+          <a class="hero-help" href="info.html">ⓘ Info / Help</a>
+        </div>
       </div>
       <img
         src="images/frankenmuth-hero.jpg"

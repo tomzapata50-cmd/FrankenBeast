@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#285c3b" />
+    <title>Info / Help · FrankenBeast</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f6f7f3;
+        color: #23382c;
+        font:
+          16px/1.5 Arial,
+          sans-serif;
+      }
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+      .eyebrow {
+        margin: 0 0 5px;
+        color: #536653;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        color: #285c3b;
+        font-size: clamp(28px, 5vw, 42px);
+        line-height: 1.15;
+      }
+      .intro {
+        max-width: 680px;
+        margin: 10px 0 18px;
+        color: #536158;
+      }
+      .demo-note {
+        display: inline-block;
+        margin: 0 0 22px;
+        padding: 6px 10px;
+        border: 1px solid #d8c58c;
+        border-radius: 9px;
+        background: #fff3ce;
+        color: #79613c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .help-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .help-card {
+        padding: 16px;
+        background: white;
+        border: 1px solid #dce3d8;
+        border-radius: 16px;
+        box-shadow: 0 4px 18px #23382c08;
+      }
+      h2 {
+        margin: 0 0 8px;
+        color: #285c3b;
+        font-size: 19px;
+        line-height: 1.25;
+      }
+      .help-card p {
+        margin: 0;
+        color: #536158;
+      }
+      .button {
+        display: inline-block;
+        min-height: 44px;
+        margin-top: 22px;
+        padding: 10px 12px;
+        border: 1px solid #c7d3c6;
+        border-radius: 9px;
+        background: #edf4ea;
+        color: #285c3b;
+        font: inherit;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+      }
+      .button:hover {
+        background: #e0ecdc;
+      }
+      .button:focus-visible {
+        outline: 3px solid #0056b3;
+        outline-offset: 3px;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 14px;
+        }
+        .help-grid {
+          grid-template-columns: 1fr;
+        }
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">FrankenBeast · Optional Add-on</p>
+        <h1>Info / Help</h1>
+        <p class="intro">
+          Welcome to this simple demo guide for exploring Frankenmuth and River
+          Place. Use the map controls to find destinations, explore locations,
+          and plan your visit.
+        </p>
+        <p class="demo-note">DEMO ONLY · OPTIONAL ADD-ON</p>
+      </header>
+      <section class="help-grid" aria-label="Map help sections">
+        <article class="help-card">
+          <h2>How to Use the Map</h2>
+          <p>
+            Choose a destination, explore the markers, and use the map to look
+            around.
+          </p>
+        </article>
+        <article class="help-card">
+          <h2>You Are Here / GPS</h2>
+          <p>
+            Tap You Are Here to share your location. GPS needs permission and
+            HTTPS or localhost.
+          </p>
+        </article>
+        <article class="help-card">
+          <h2>Get Route</h2>
+          <p>
+            Select a destination, then choose Get Route to show a straight-line
+            guide.
+          </p>
+        </article>
+        <article class="help-card">
+          <h2>Open in Google Maps</h2>
+          <p>
+            Use this link for walking directions in Google Maps. It opens in a
+            new tab.
+          </p>
+        </article>
+        <article class="help-card">
+          <h2>What the Icons Mean</h2>
+          <p>
+            Map icons identify shops, restrooms, the trolley, the riverboat, and
+            your location.
+          </p>
+        </article>
+        <article class="help-card">
+          <h2>Need Help</h2>
+          <p>
+            Lorem ipsum placeholder: more visitor help and local details can
+            appear here later.
+          </p>
+        </article>
+      </section>
+      <a class="button" href="river-place.html">Back to River Place</a>
+    </main>
+  </body>
+</html>

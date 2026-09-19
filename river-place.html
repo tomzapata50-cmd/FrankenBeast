@@ -46,6 +46,15 @@
         margin: 8px 0 16px;
         color: #536158;
       }
+      header {
+        position: relative;
+      }
+      .info-button {
+        display: inline-block;
+        min-height: 44px;
+        padding: 8px 10px;
+        font-size: 14px;
+      }
       .panel {
         background: white;
         border: 1px solid #dce3d8;
@@ -133,6 +142,31 @@
       }
       .dinotour-card:hover {
         background: #fff3ce;
+      }
+      .promo-card {
+        align-self: start;
+        padding: 12px;
+        border: 1px solid #d8c58c;
+        border-radius: 9px;
+        background: #fff8e9;
+      }
+      .promo-card p {
+        margin: 4px 0 0;
+        color: #58665d;
+        font-size: 13px;
+      }
+      .promo-card .promo-label {
+        margin: 0;
+        color: #79613c;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .promo-card strong {
+        display: block;
+        margin-top: 2px;
+        color: #285c3b;
       }
       #google {
         display: block;
@@ -247,8 +281,13 @@
         display: none !important;
       }
       @media (min-width: 601px) {
+        .info-button {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
         .controls {
-          grid-template-columns: 3fr 2fr;
+          grid-template-columns: 3fr 1.5fr 2fr;
         }
         .controls > div:last-child label {
           margin-bottom: 4px;
@@ -267,6 +306,9 @@
       @media (max-width: 600px) {
         main {
           padding: 14px;
+        }
+        .info-button {
+          margin-top: 10px;
         }
         .controls {
           grid-template-columns: 1fr;
@@ -287,6 +329,7 @@
         <button type="button" onclick="window.location.href = 'index.html'">
           Back to Frankenmuth
         </button>
+        <a class="button info-button" href="info.html">ⓘ Info / Help</a>
       </header>
       <section class="panel controls" aria-label="Map controls">
         <div>
@@ -304,6 +347,11 @@
             <strong>🦖 DinoTour for Kids</strong>
             <span>Explore, discover, and have a little fun along the way.</span>
           </a>
+        </div>
+        <div class="promo-card" aria-label="Demo promotion">
+          <p class="promo-label">Demo promo</p>
+          <strong>Featured Today</strong>
+          <p>Specials, events, and local offers can appear here.</p>
         </div>
         <div>
           <label for="destination">Where would you like to go?</label>
