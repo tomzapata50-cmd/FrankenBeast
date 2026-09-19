@@ -264,6 +264,14 @@
         <div>
           <label for="destination">Where would you like to go?</label>
           <select id="destination"></select>
+          <button
+            id="get-route"
+            type="button"
+            aria-controls="map"
+            aria-describedby="route-status"
+          >
+            Get Route
+          </button>
           <a
             id="google"
             class="button"
@@ -474,6 +482,7 @@
               d.note + " Enable location to see a straight-line guide.";
           }
         }
+        $("get-route").addEventListener("click", refresh);
         function updateDestination() {
           refresh();
           const d = selected();
