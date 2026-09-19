@@ -224,6 +224,24 @@
       [hidden] {
         display: none !important;
       }
+      @media (min-width: 601px) {
+        .controls {
+          grid-template-columns: 3fr 2fr;
+        }
+        .controls > div:last-child label {
+          margin-bottom: 4px;
+        }
+        .controls > div:last-child select {
+          margin-bottom: 6px;
+        }
+        .controls > div:last-child #get-route {
+          display: block;
+          width: 100%;
+        }
+        .controls > div:last-child #google {
+          margin-top: 6px;
+        }
+      }
       @media (max-width: 600px) {
         main {
           padding: 14px;
